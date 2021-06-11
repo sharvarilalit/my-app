@@ -1,0 +1,1 @@
+props.cake.discount?`Discount:${props.cake.discount}`:null

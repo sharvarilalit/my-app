@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+:root {
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.container {
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align:left;
+  margin-top:60px;
+  padding-top:'80px';
+  border:'1px solid transparent';
+  box-shadow:none !important;
+  min-height: 60vh!important;
+}
+
+h2 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+.form {
+  padding: 30px 40px;
+}
+.form-controls {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+  border:'1px solid transparent !important'
+}
+.form-controls label {
+  color: #777;
+  display: block;
+  margin-bottom: 5px;
+}
+.form-controls input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-controls input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+.form-controls.success input {
+  border-color: #2ecc71;
+}
+.form-controls.error input {
+  border-color: #e74c3c;
+}
+
+.form-controls small {
+  color: var(--error-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-controls.error small {
+  visibility: visible;
+}
+
+.form button {
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  outline: none;
+}
+
+body{
+  background-color: #efefef;
+  height: 100% !important;
+}
+a{
+  text-decoration:none !important
+}
+.button{
+  background:#c00a27 !important;
+  border:#c00a27 !important;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  outline: none;
+}
+.footer,
+.push {
+  height: 55px;
+}
+.footer{
+  padding:"10px";
+  background:'#4e4344 !important';
+  margin-top:"30px"
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+      max-width:100% !important
+  }
+}
+
+@media screen and (max-width: 576px){
+.container, .container-sm {
+  max-width:100% !important
+}
+}
