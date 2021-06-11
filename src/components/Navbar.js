@@ -6,11 +6,11 @@ import React from 'react';
 import Logo from '../images/logo1.png';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
+import ShopIcon from '@material-ui/icons/Shop';
 import {  Link } from 'react-router-dom'  
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { CartListMiddleware } from '../reduxstore/middlewares'
+import { CartListMiddleware , OrderMiddleware} from '../reduxstore/middlewares'
 
 
 const Navbar=(props)=>{
@@ -37,20 +37,25 @@ const Navbar=(props)=>{
   const goToCart=(e)=>{
      props.history.push('/cart')
   }
+  const goToOrders=(e)=>{
+    props.history.push('/my-orders')
+ }
 
   React.useEffect(()=>{
-    if(props.isLogedIn ==true){
+    if(props.isLogedIn ==true || props.status==true){
      // alert("i am called")
       const token = props.token;
       props.dispatch(CartListMiddleware(token)); 
+      props.dispatch(OrderMiddleware(token)); 
     }
 
-  },[props.isLogedIn])
+  },[props.isLogedIn,props.status])
 
 //alert(props.isLogedIn);
   const changeOn=(e)=>{
     searchInput = e.target.value;
-    {console.log("searchInput onchane", searchInput)}
+    // eslint-disable-next-line no-lone-blocks
+    //{console.log("searchInput onchane", searchInput)}
    // setSearchInput(e.target.value)
   }
 
@@ -92,8 +97,12 @@ const Navbar=(props)=>{
               <button type="button" class="btn btn-warning" type="submit" onClick={search}>Search</button>
             </form>
             &nbsp;
-            {props.isLogedIn&&<Badge badgeContent={props.count.length==0?4:props.count.length} color="secondary">
+            {props.isLogedIn&&<Badge badgeContent={props.count.length==0?0:props.count.length} color="secondary">
               <ShoppingCartIcon  onClick={goToCart} style={{color:'#fff',cursor:'pointer'}}/>
+            </Badge> }&nbsp;&nbsp;
+
+            {props.isLogedIn&&<Badge badgeContent={props.count.ordercount==0?1:props.ordercount.length} color="secondary">
+              <ShopIcon  onClick={goToOrders} style={{color:'#fff',cursor:'pointer'}}/>
             </Badge>}
           </div>
         </div>
@@ -109,7 +118,9 @@ function mapStateToProps(state,props){
   return{
     isLogedIn:state.AuthReducer.isLogedIn,
     count:state.CartReducer.cart,
-    token:state.AuthReducer.token
+    ordercount:state.CartReducer.totalorders,
+    token:state.AuthReducer.token,
+    status:state.CartReducer.status
   }
 };
 

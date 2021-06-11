@@ -37,6 +37,7 @@ export function loginMiddleware(data){
 }
 
 export function CartListMiddleware(data){
+  //alert(1)
    // alert(data)
     return function(dispatch){
         axios(
@@ -62,5 +63,117 @@ export function CartListMiddleware(data){
                     });
     }
    
+
+}
+
+
+export function RemoveCartMiddleware(data){
+  // alert(data)
+   return function(dispatch){
+    let  apiurl =process.env.REACT_APP_BASE_URI+"removecakefromcart";
+ 
+           axios({
+           method:"post",
+           url:apiurl,
+           headers:{
+              authtoken:data
+           },
+           data:{}}).then((res)=>{
+            dispatch({
+              type:'EMPTYCART',
+           });
+         } ,(error)=>{
+                 console.log(error)
+         });
+      
+   }
+}
+
+
+export function RemoveSpecificakeMiddleware(token,id,URI){
+  // alert(data)
+   return function(dispatch){
+    let  apiurl =process.env.REACT_APP_BASE_URI+URI;
+ 
+           axios({
+           method:"post",
+           url:apiurl,
+           headers:{
+              authtoken:token
+           },
+           data:{
+             cakeid:id
+           }}).then((res)=>{
+          
+            dispatch({
+              type:'REMOVESPECIC',
+              payload:{
+                status:true
+              }
+           });
+           
+        //  CartListMiddleware(token)
+         } ,(error)=>{
+                 console.log(error)
+         });
+      
+   }
+}
+
+export function OrderMiddleware(data){
+   return function(dispatch){
+       axios(
+           {
+               method:"post",
+               url:process.env.REACT_APP_BASE_URI+'cakeorders',
+               headers:{
+                  authtoken:data
+               },
+               data:{}})
+                   .then(res => {
+                       const Data = res.data.error!=null?[]:res.data.data;
+                       //console.log('result is',res)
+                       dispatch({
+                           type:'ALLORDERS',
+                           payload:{
+                            orders:Data
+                           }
+                       });
+                   });
+   }
+  
+
+}
+
+
+export function PlaceOrderMiddleware(token,data,cart,price){
+  return function(dispatch){
+      axios(
+          {
+              method:"post",
+              url:process.env.REACT_APP_BASE_URI+'addorder',
+              headers:{
+                 authtoken:token
+              },
+              data:{
+                city:data.city,
+                name:data.username,
+                addeess:data.address,
+                pincode:data.pincode,
+                phone:data.phone,
+                cakes:cart,
+                price:price
+              }})
+                  .then(res => {
+                      const Data = res.data.error!=null?[]:res.data.data;
+                      dispatch({
+                          type:'PLACEORDER',
+                          payload:{
+                           success:true
+                          }
+                      });
+                  });
+  }
+ 
 
 }

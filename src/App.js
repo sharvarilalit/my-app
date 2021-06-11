@@ -12,6 +12,7 @@ import CakeDetails from './components/cakeDetails'
 import SearchCake from './components/search'
 import Footer from './components/footer';
 import Cart from './components/cart';
+import Orders from './components/myOrders';
 import CheckOut from'./components/checkout';
 import axios from 'axios';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'  
@@ -39,7 +40,7 @@ function App() {
           }).then(res => {
             //const Data = res.data.data;
             //setData(Data);
-            console.log('result is',res)
+            //console.log('result is',res)
         })
     }        
   }, [])
@@ -70,6 +71,7 @@ function App() {
           <Route path="/cake/:cakeid" exact component={CakeDetails} /> 
           <Route path="/searchdetails" exact component={SearchCake} /> 
           {localStorage&&<Route path="/cart" exact component={Cart} /> }
+          {localStorage&&<Route path="/my-orders" exact component={Orders} /> }
           {localStorage&&<Route path="/checkout" component={CheckOut} /> }
           <Route path="/*" exact component={PageNotFound} />  
 

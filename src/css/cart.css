@@ -72,8 +72,9 @@ select.form-control {
 .wishlist-table .count-input,
 .order-table .count-input {
     display: inline-block;
-    width: 100%;
-    width: 86px
+    width: 46px;
+    height:26px;
+    background-color: #fff
 }
 
 .shopping-cart .product-item,
@@ -215,3 +216,6 @@ select.form-control {
     height: 36px;
 }
 
+.cart_icon{
+    cursor:'pointer'
+}
