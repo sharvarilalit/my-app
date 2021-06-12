@@ -3,7 +3,7 @@ import Summary from './summary';
 import Confirm from './confirm';
 import Address from './address';
 import {connect} from 'react-redux';
-import {withRouter, Route ,Link, useRouteMatch, Redirect} from 'react-router-dom'  
+import {withRouter, Route ,Link, useRouteMatch} from 'react-router-dom';  
 import { PlaceOrderMiddleware ,CartListMiddleware,OrderMiddleware} from '../reduxstore/middlewares'
 
  function Checkout(props) {
@@ -18,6 +18,11 @@ import { PlaceOrderMiddleware ,CartListMiddleware,OrderMiddleware} from '../redu
            props.history.push('/')
         }
       }, [props.total]);
+
+    
+      React.useEffect(() => {
+           props.history.push(path)
+      }, []);
 
     const handletabChange=()=>{
         settab2(true)
@@ -84,7 +89,8 @@ function mapStateToProps(state,props){
     return{
       total:state.CartReducer.totalprice,
       cart:state.CartReducer.cart,
-      success:state.CartReducer.ordersuccess
+      success:state.CartReducer.ordersuccess,
+      token:state.AuthReducer.token,
     }
   };
   

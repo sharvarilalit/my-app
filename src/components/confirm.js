@@ -20,7 +20,7 @@ export default function confirm(props) {
                     <p class="card-text myClass2 head"> Total Amount : <small class="text-muted"> &#8377;{props.total}</small> </p>
 
 
-                    <button className="button" style={{borderRadius:'0px'}} onClick={props.click()}> Place order </button>
+                    <button className="button" style={{borderRadius:'0px'}} onClick={(e)=>props.click()}> Place order </button>
 
                     </div>
                 </div>

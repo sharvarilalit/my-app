@@ -3,14 +3,14 @@ import React from 'react';
 // import Img2 from '../images/5.jpg';
 // import Img3 from '../images/3.jpg';
 // import Img5 from '../images/6.jpg';
-import Logo from '../images/logo1.png';
+import Logo from '../images/logo4.png';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShopIcon from '@material-ui/icons/Shop';
 import {  Link } from 'react-router-dom'  
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { CartListMiddleware , OrderMiddleware} from '../reduxstore/middlewares'
+import { CartListMiddleware , OrderMiddleware} from '../reduxstore/middlewares';
 
 
 const Navbar=(props)=>{
@@ -74,10 +74,10 @@ const Navbar=(props)=>{
   console.log('props in this',props)
     return(
         <>
-        <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" style={{padding:"20px",background:'#4e4344 !important'}}>
+        <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" style={{background:'#4e4344 !important'}}>
         <div className="container-fluid">
-           <a className="navbar-brand" href="/">
-            <img src={Logo} alt="" width="120" height="35"></img>
+           <a className="navbar" href="/" >
+            <img src={Logo} alt=""  height="58"></img>
            </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
