@@ -28,9 +28,8 @@ function Cake(props){
 
       
      // console.log("props.data.length",props.data)
-       
         return (
-           
+          
             <>
           { props&&props.data&&props.data.length>0?slice.map((key,index)=>{
                 return<div class="col" key={index} className="img-hover-zoom">

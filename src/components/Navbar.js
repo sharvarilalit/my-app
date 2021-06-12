@@ -11,7 +11,7 @@ import {  Link } from 'react-router-dom'
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { CartListMiddleware , OrderMiddleware} from '../reduxstore/middlewares';
-
+import PersonIcon from '@material-ui/icons/Person';
 
 const Navbar=(props)=>{
   //const[searchInput, setSearchInput]=React.useState("kuch bhi")
@@ -40,6 +40,9 @@ const Navbar=(props)=>{
   const goToOrders=(e)=>{
     props.history.push('/my-orders')
  }
+ const goToAdmin=(e)=>{
+  props.history.push('/admin')
+}
 
   React.useEffect(()=>{
     if(props.isLogedIn ==true || props.status==true){
@@ -71,7 +74,7 @@ const Navbar=(props)=>{
     setButton(!button)
     props.click();
   }
-  console.log('props in this',props)
+  //console.log('props in this',props.ordercount)
     return(
         <>
         <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" style={{background:'#4e4344 !important'}}>
@@ -101,9 +104,12 @@ const Navbar=(props)=>{
               <ShoppingCartIcon  onClick={goToCart} style={{color:'#fff',cursor:'pointer'}}/>
             </Badge> }&nbsp;&nbsp;
 
-            {props.isLogedIn&&<Badge badgeContent={props.count.ordercount==0?1:props.ordercount.length} color="secondary">
+            {props.isLogedIn&&<Badge badgeContent={props.ordercount==0?0:props.ordercount} color="secondary">
               <ShopIcon  onClick={goToOrders} style={{color:'#fff',cursor:'pointer'}}/>
-            </Badge>}
+            </Badge>}&nbsp;&nbsp;
+
+            {props.isLogedIn&& <PersonIcon  onClick={goToAdmin} style={{color:'#fff',cursor:'pointer'}}/>
+            }
           </div>
         </div>
       </nav>

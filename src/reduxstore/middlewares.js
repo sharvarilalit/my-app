@@ -70,7 +70,7 @@ export function CartListMiddleware(data){
 export function RemoveCartMiddleware(data){
   // alert(data)
    return function(dispatch){
-    let  apiurl =process.env.REACT_APP_BASE_URI+"removecakefromcart";
+    let  apiurl =process.env.REACT_APP_BASE_URI+"clearcart";
  
            axios({
            method:"post",
@@ -131,7 +131,8 @@ export function OrderMiddleware(data){
                },
                data:{}})
                    .then(res => {
-                       const Data = res.data.error!=null?[]:res.data.data;
+                     console.log('orders',res.data.cakeorders)
+                       const Data = res.data.error!=null?[]:res.data.cakeorders;
                        //console.log('result is',res)
                        dispatch({
                            type:'ALLORDERS',
@@ -151,14 +152,14 @@ export function PlaceOrderMiddleware(token,data,cart,price){
       axios(
           {
               method:"post",
-              url:process.env.REACT_APP_BASE_URI+'addorder',
+              url:process.env.REACT_APP_BASE_URI+'addcakeorder',
               headers:{
                  authtoken:token
               },
               data:{
                 city:data.city,
                 name:data.username,
-                addeess:data.address,
+                address:data.address,
                 pincode:data.pincode,
                 phone:data.phone,
                 cakes:cart,

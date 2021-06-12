@@ -14,6 +14,7 @@ import Footer from './components/footer';
 import Cart from './components/cart';
 import Orders from './components/myOrders';
 import CheckOut from'./components/checkout';
+import Admin from './components/admin';
 import axios from 'axios';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'  
 
@@ -73,6 +74,7 @@ function App() {
           {localStorage&&<Route path="/cart" exact component={Cart} /> }
           {localStorage&&<Route path="/my-orders" exact component={Orders} /> }
           {localStorage&&<Route path="/checkout" component={CheckOut} /> }
+          {localStorage&&<Route path="/admin" component={Admin} /> }
           <Route path="/*" exact component={PageNotFound} />  
 
           </Switch>

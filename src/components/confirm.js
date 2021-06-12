@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function confirm(props) {
-    console.log('props',props)
+    //console.log('props',props)
     return (
         <div>
             <center><h3>Confirm Details</h3></center>

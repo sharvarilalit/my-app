@@ -13,7 +13,7 @@ function CartReducer(state={
          state["cart"]=[];
          state["totalprice"]=0;
          state["cart"] =[...state.cart, ...action.payload.cakedata];
-         
+         state["status"] =false;
          if( state["cart"].length>0){
              state["cart"].forEach(function(x, index, arry){
                 //state["totalprice"] += x.price * x.quantity;
@@ -48,6 +48,7 @@ function CartReducer(state={
 
      case "ALLORDERS":
         state["orders"]=[];
+       // console.log('orders', action.payload.orders)
         if(action.payload.orders.length>0){
             state["orders"] =[...state.orders, ...action.payload.orders];
         }

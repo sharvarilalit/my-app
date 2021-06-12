@@ -91,8 +91,8 @@ function SignIn(props) {
             fieldValidationErrors.email = emailValid ? '' : ' is invalid';
             break;
           case 'password':
-            passwordValid = value.length >= 6;
-            fieldValidationErrors.password = passwordValid ? '': ' is too short';
+            passwordValid = value.length >0;
+            fieldValidationErrors.password = passwordValid ? '': 'Please Enter password';
             break;
           default:
             break;

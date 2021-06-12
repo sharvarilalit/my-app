@@ -102,6 +102,18 @@ function Cart(props) {
         props.history.push('/checkout/address');
     }
 
+        React.useEffect(() => {
+            if(props.status == true){
+                props.history.push('/cart');
+            }
+        }, [props.status ]);
+
+        React.useEffect(() => {
+            if(props.status == true){
+            props.history.push('/my-orders');
+            }
+        }, [props.ordersuccess ]);
+
         if(localStorage.getItem('token')){
             return<>   
                  <div class={`${props.show==false?null:'container'}`}>
@@ -122,16 +134,18 @@ function Cart(props) {
                                         <th class="text-center">Quantity</th>
                                         <th class="text-center">Price</th>
                                         <th class="text-center">Amount</th>
-                                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#" onClick={Emptycart}>Clear Cart</a></th>
+                                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#" onClick={Emptycart}>Clear All</a></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 {props.cart.map((x)=>{ return <tr>
                                         <td>
                                             <div class="product-item">
-                                                <a class="product-thumb" href="#"><img src={x.image} alt="Product" /></a>
+                                            {/* <Link to={'/cake/'+key.cakeid}><img  src={key.image} style={{height:'250px'}}class="card-img-top" alt="..." /></Link> */}
+
+                                                <a class="product-thumb" href={'/cake/'+x.cakeid}><img src={x.image} alt="Product" /></a>
                                                 <div class="product-info">
-                                                    <h4 class="product-title"><a href="#">{x.name}</a></h4><span><em>Weight:</em> {x.weight}</span><span><em>Flavour:</em> {x.name.split(" ")[0]}</span>
+                                                    <h4 class="product-title"><a href={'/cake/'+x.cakeid}>{x.name}</a></h4><span><em>Weight:</em> {x.weight}</span><span><em>Flavour:</em> {x.name.split(" ")[0]}</span>
                                                 </div>
                                             </div>
                                         </td>
@@ -192,6 +206,8 @@ function mapStateToProps(state,props){
       isLoading:state.CartReducer.isLoading,
       token:state.AuthReducer.token,
       total:state.CartReducer.totalprice,
+      status:state.CartReducer.status,
+      ordersuccess:state.CartReducer.ordersuccess
     }
   };
   

@@ -219,3 +219,10 @@ select.form-control {
 .cart_icon{
     cursor:'pointer'
 }
+
+.shopping-cart .product-item .product-thumb1,
+.wishlist-table .product-item .product-thumb1,
+.order-table .product-item .product-thumb1 {
+    width:40px;
+    padding-right: 10px
+}
