@@ -75,8 +75,8 @@ h2 {
 
 .form button {
   cursor: pointer;
-  background-color: #3498db;
-  border: 2px solid #3498db;
+  background:#c00a27 ;
+  border:#c00a27 ;
   border-radius: 4px;
   color: #fff;
   display: block;
@@ -94,20 +94,11 @@ body{
 a{
   text-decoration:none !important
 }
-.button{
-  background:#c00a27 !important;
-  border:#c00a27 !important;
-  cursor: pointer;
-  background-color: #3498db;
-  border: 2px solid #3498db;
-  border-radius: 4px;
-  color: #fff;
-  display: block;
-  font-size: 16px;
-  padding: 10px;
-  margin-top: 20px;
-  width: 100%;
-  outline: none;
+
+.Disabled{
+  background:#726f6f !important;
+  border:#614a4e !important;
+  cursor:not-allowed !important;
 }
 .footer,
 .push {

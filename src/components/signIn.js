@@ -88,7 +88,7 @@ function SignIn(props) {
         switch(fieldName) {
           case 'email':
             emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-            fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+            fieldValidationErrors.email = emailValid ? '' : ' Enter Valid Email';
             break;
           case 'password':
             passwordValid = value.length >0;
@@ -107,6 +107,11 @@ function SignIn(props) {
         //  {console.log("final state",state)}
         return (
             <div className="container">
+              {/* {state.formValid==true||state.formSubmit==true?<div class="alert alert-danger" role="alert">
+                 {state.formSubmit===true?state.formMessage:null}
+                 {state.formValid?"Form is Valid Please Login":null}
+              </div>:null} */}
+              
             {props.isLoading && <center> <Loader type="Bars" color="#00BFFF" height={80} width={80} /></center>}
             <form id="form" className="form" onSubmit={handleInputSubmit}>
               <h2>Sign In</h2>
@@ -121,7 +126,7 @@ function SignIn(props) {
                   id="email"
                   placeholder="Enter email"
                 />
-                <div>{state.formErrors.email}</div>
+                <div className="errors">{state.formErrors.email}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="passowrd">Password</label>
@@ -133,16 +138,18 @@ function SignIn(props) {
                   id="password"
                   placeholder="Enter password"
                 />
-                 <div>{state.formErrors.password}</div>
+                 <div className="errors">{state.formErrors.password}</div>
               </div>
              
-              <button className="button" disabled={!state.formValid}> Login </button>
-              <p>{state.formValid?"Form is Valid":null}</p>
+              {state.formValid?<button className="button" disabled={!state.formValid}> Login </button>:
+                  <button className="Disabled" disabled={!state.formValid}> Login </button>
+              }
+              {/* <p>{state.formValid?"Form is Valid":null}</p>
             
                 <div className="panel panel-default">
                 <FormErrors formErrors={state.formErrors} />
                 </div>
-              {state.formSubmit===true?state.formMessage:null}
+              {state.formSubmit===true?state.formMessage:null} */}
             </form>
           </div>
         )

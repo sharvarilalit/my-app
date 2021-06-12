@@ -159,11 +159,6 @@ import axios from 'axios';
                 <div>{this.state.formErrors.cnfpassword}</div>
               </div>
               <button  disabled={!this.state.formValid} className="button"> Submit</button>
-              <p>{this.state.formValid?"Form is Valid":null}</p>
-            
-                <div className="panel panel-default">
-                <FormErrors formErrors={this.state.formErrors} />
-                </div>
             </form>
           </div>
         )

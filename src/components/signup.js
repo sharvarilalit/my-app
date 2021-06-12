@@ -101,12 +101,10 @@ import axios from 'axios';
         return (
             <div className="container">
 
-              {this.state.formSubmit===true?
-              
-              <div class="alert alert-danger" role="alert">
-                 {this.state.formMessage}!
-              </div>
-              :null}
+        {this.state.formValid==true?<div class="alert alert-danger" role="alert">
+                 {this.state.formSubmit===true?this.state.formMessage:null}
+                 {/* {this.state.formValid?"Form is Valid Please SignUp":null} */}
+              </div>:null}
 
             <form id="form" className="form" onSubmit={this.handleInputSubmit}>
               <h2>Register with Us</h2>
@@ -120,7 +118,7 @@ import axios from 'axios';
                   id="username"
                   placeholder="Enter username"
                 />
-                <div>{this.state.formErrors.username}</div>
+                <div className="errors">{this.state.formErrors.username}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="email">Email</label>
@@ -132,7 +130,7 @@ import axios from 'axios';
                   id="email"
                   placeholder="Enter email"
                 />
-                <div>{this.state.formErrors.email}</div>
+                <div className="errors">{this.state.formErrors.email}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="passowrd">Password</label>
@@ -144,7 +142,7 @@ import axios from 'axios';
                   id="password"
                   placeholder="Enter password"
                 />
-                 <div>{this.state.formErrors.password}</div>
+                 <div className="errors">{this.state.formErrors.password}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="password2">Confirm Passowrd</label>
@@ -156,17 +154,16 @@ import axios from 'axios';
                   id="password2"
                   placeholder="Enter passowrd again"
                 />
-                <div>{this.state.formErrors.cnfpassword}</div>
+                <div className="errors">{this.state.formErrors.cnfpassword}</div>
               </div>
-              <button  disabled={!this.state.formValid} className="button"> Submit</button>
-              <p>{this.state.formValid?"Form is Valid":null}</p>
-            
-                <div className="panel panel-default">
-                <FormErrors formErrors={this.state.formErrors} />
-                </div>
 
-              {/* { console.log(this.state)} */}
-              
+              {this.state.formValid?<button className="button" disabled={!this.state.formValid}> SignUp </button>:
+                  <button className="Disabled" disabled={!this.state.formValid}> SignUp </button>
+              }
+            
+                {/* <div className="panel panel-default">
+                <FormErrors formErrors={this.state.formErrors} />
+                </div> */}
             </form>
           </div>
         )

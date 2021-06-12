@@ -114,7 +114,7 @@ import axios from 'axios';
                   id="username"
                   placeholder="Enter name"
                 />
-                <div>{this.state.formErrors.username}</div>
+                <div className="errors">{this.state.formErrors.username}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="phone">Phone Number*</label>
@@ -126,7 +126,7 @@ import axios from 'axios';
                   id="email"
                   placeholder="Enter Phone"
                 />
-                <div>{this.state.formErrors.phone}</div>
+                <div className="errors">{this.state.formErrors.phone}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="city">City*</label>
@@ -138,7 +138,7 @@ import axios from 'axios';
                   id="city"
                   placeholder="Enter City"
                 />
-                 <div>{this.state.formErrors.city}</div>
+                 <div className="errors">{this.state.formErrors.city}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="pincode">Pincode*</label>
@@ -150,7 +150,7 @@ import axios from 'axios';
                   id="pincode"
                   placeholder="Enter Pincode"
                 />
-                <div>{this.state.formErrors.pincode}</div>
+                <div className="errors">{this.state.formErrors.pincode}</div>
               </div>
               <div className="form-controls">
                 <label htmlFor="address">Address*</label>
@@ -165,14 +165,14 @@ import axios from 'axios';
                 >
                     {this.state.address}
                 </textarea>
-                <div>{this.state.formErrors.pincode}</div>
+                <div className="errors">{this.state.formErrors.pincode}</div>
               </div>
               <div class="shopping-cart-footer">
                   <center>
               {!this.state.formValid?
                <div class="column"><a class="btn btn-outline-primary disabled" href="#"><i class="icon-arrow-left"></i>&nbsp;Proceed</a></div>
               :
-              <button  disabled={!this.state.formValid} className="button"> Proceed</button>
+              <button className="button"> Proceed</button>
               }
               </center>  
             </div>
