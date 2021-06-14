@@ -52,7 +52,7 @@ const Navbar=(props)=>{
       props.dispatch(OrderMiddleware(token)); 
     }
 
-  },[props.isLogedIn,props.status])
+  },[props.isLogedIn,props.status, props.ordercount])
 
 //alert(props.isLogedIn);
   const changeOn=(e)=>{

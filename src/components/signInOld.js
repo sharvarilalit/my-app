@@ -6,7 +6,6 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import{loginMiddleware} from '../reduxstore/middlewares';
 import Loader from "react-loader-spinner";
-import Toaster from './toaster';
 
 
 function SignIn(props) {
@@ -20,16 +19,8 @@ function SignIn(props) {
         formSubmit:false,
         formMessage:''
    });
-   const [toaster, setToasteropen] = React.useState(false);
-   const [message, setMessage] = React.useState('');
 
-      const handleClickToast= () => {
-        setToasteropen(true);
-      };
-
-      const handleCloseToast = () => {
-        setToasteropen(false);
-      };
+   
 
      const handleInputChange=(e)=>{
           const name = e.target.name;
@@ -83,13 +74,10 @@ function SignIn(props) {
         if(props.isLogedIn === true){
           setTimeout(function(){ 
             props.history.push('/')
-          }, 3000);
+          }, 1000);
         }
-        if(props.messsage !== ''){
-          setToasteropen(true);
-          setMessage(props.messsage)
-        }
-       }, [props.isLogedIn, props.message ]);
+ 
+       }, [props.isLogedIn ]);
 
       const validateField=(fieldName, value)=> {
           
@@ -116,7 +104,7 @@ function SignIn(props) {
                       });
       }
       
-        {console.log("final state",props.message , props.isLoading)}
+        //  {console.log("final state",state)}
         return (
             <div className="container">
               {/* {state.formValid==true||state.formSubmit==true?<div class="alert alert-danger" role="alert">
@@ -124,7 +112,7 @@ function SignIn(props) {
                  {state.formValid?"Form is Valid Please Login":null}
               </div>:null} */}
               
-            {props.isLoading==true?<center> <Loader type="Bars" color="#00BFFF" height={80} width={80} /></center>:null}
+            {props.isLoading && <center> <Loader type="Bars" color="#00BFFF" height={80} width={80} /></center>}
             <form id="form" className="form" onSubmit={handleInputSubmit}>
               <h2>Sign In</h2>
              
@@ -163,7 +151,6 @@ function SignIn(props) {
                 </div>
               {state.formSubmit===true?state.formMessage:null} */}
             </form>
-            {toaster===true?<Toaster toast={toaster} handleClickToast={handleClickToast} handleCloseToast={handleCloseToast} message={message} />:null}
           </div>
         )
 }
@@ -175,9 +162,7 @@ function mapStateToProps(state,props){
  // alert('props are',props)
   return{
     isLogedIn:state.AuthReducer.isLogedIn,
-    isLoading:state.AuthReducer.isLoading,
-    messsage:state.AuthReducer.success
-
+    isLoading:state.AuthReducer.isLoading
   }
 };
 

@@ -83,7 +83,7 @@ export function RemoveCartMiddleware(data){
               type:'EMPTYCART',
            });
          } ,(error)=>{
-                 console.log(error)
+                 //console.log(error)
          });
       
    }
@@ -114,7 +114,7 @@ export function RemoveSpecificakeMiddleware(token,id,URI){
            
         //  CartListMiddleware(token)
          } ,(error)=>{
-                 console.log(error)
+                 //console.log(error)
          });
       
    }
@@ -131,7 +131,7 @@ export function OrderMiddleware(data){
                },
                data:{}})
                    .then(res => {
-                     console.log('orders',res.data.cakeorders)
+                    // console.log('orders',res.data.cakeorders)
                        const Data = res.data.error!=null?[]:res.data.cakeorders;
                        //console.log('result is',res)
                        dispatch({
@@ -177,4 +177,23 @@ export function PlaceOrderMiddleware(token,data,cart,price){
   }
  
 
+}
+
+export function AllCakesMiddleWare(data){
+    return function(dispatch){
+        axios(
+            {
+                method:"get",
+                url:process.env.REACT_APP_BASE_URI+'allcakes',
+                })
+                    .then(res => {
+                        const Data = res.data.data;
+                        dispatch({
+                            type:'ALLCAKES',
+                            payload:{
+                              cakedata:Data
+                            }
+                        });
+                    });
+    }
 }

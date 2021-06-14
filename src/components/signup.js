@@ -47,11 +47,11 @@ import axios from 'axios';
             email:this.state.email,
             password:this.state.password
           }}).then((res)=>{
-           // console.log("in this",res)
+         
             this.setState({formMessage:res.data.message});
             this.props.history.push('/sign-in')
         } ,(error)=>{
-          //console.log(error);
+         
           this.setState({formMessage:'Form Submitted Fail'});
         })
       }
@@ -78,7 +78,7 @@ import axios from 'axios';
             break; 
           case 'cnfpassword':
             cnfpasswordValid = value.length >= 6;
-            fieldValidationErrors.cnfpassword = cnfpasswordValid && cnfpasswordValid=== passwordValid? '': ' is too short';
+            fieldValidationErrors.cnfpassword = cnfpasswordValid && this.state.cnfpassword=== this.state.password? '': ' is too short';
                 break;    
           default:
             break;

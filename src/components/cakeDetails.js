@@ -4,8 +4,8 @@ import {useParams, Link} from 'react-router-dom';
 import Loader from "react-loader-spinner";
 import Img1 from '../images/4.jpg';
 import Cake from './cake';
-import '../css/App.css';
 import "../css/styles.css";
+import '../css/App.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css'; 
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -103,7 +103,7 @@ import { CartListMiddleware } from '../reduxstore/middlewares'
                     <img src={image} alt="..." style={{width:'100%',height:'100%'}}/>
                 </div>
                 <div class="col-md-7">
-                    <div class="card-body">
+                    <div class="card-body form">
                     <h4 class="card-title myClass" style={{fontSize:'50px'}}>{name}</h4>
                     <p class="card-text myClass">{description}</p>
                     <p class="card-text myClass head"> Ingredients </p>

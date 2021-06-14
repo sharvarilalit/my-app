@@ -7,7 +7,7 @@ import "../css/pagination.css";
 
 function Cake(props){
 
-    const [offset, setOffset] = useState(1);
+    const [offset, setOffset] = useState(0);
     const [perPage] = useState(8);
     const [pageCount, setPageCount] = useState(0);
     const  [slice, setSlice] = useState([]);
@@ -15,7 +15,7 @@ function Cake(props){
     const handlePageClick = (e) => {
        // alert(e.selected)
         const selectedPage = e.selected;
-        setOffset(selectedPage + 1);
+        setOffset(selectedPage);
       };
 
       React.useEffect(() => {
@@ -50,7 +50,7 @@ function Cake(props){
                 nextLabel={"next"}
                 breakLabel={"..."}
                 breakClassName={"break-me"}
-                pageCount={ Math.round(props.data.length/perPage)}
+                pageCount={ Math.ceil(props.data.length/perPage)}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}
                 onPageChange={handlePageClick}
