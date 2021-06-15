@@ -15,7 +15,7 @@ export default function Toaster(props) {
         horizontal: 'left',
       }}
       onClose={props.handleClose}>
-        <MuiAlert onClose={props.handleCloseToast} severity="success">
+        <MuiAlert onClose={props.handleCloseToast} severity={props.class}>
           {props.message}
         </MuiAlert>
       </Snackbar>

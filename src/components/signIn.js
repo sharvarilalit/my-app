@@ -22,6 +22,8 @@ function SignIn(props) {
    });
    const [toaster, setToasteropen] = React.useState(false);
    const [message, setMessage] = React.useState('');
+   const [color, setColor] = React.useState('');
+
 
       const handleClickToast= () => {
         setToasteropen(true);
@@ -88,8 +90,16 @@ function SignIn(props) {
         if(props.messsage !== ''){
           setToasteropen(true);
           setMessage(props.messsage)
+         
         }
-       }, [props.isLogedIn, props.message ]);
+
+        if(props.status==true){
+          setColor('success');
+        }
+        else{
+          setColor('warning');
+        }
+       }, [props.isLogedIn, props.message ,props.status]);
 
       const validateField=(fieldName, value)=> {
           
@@ -163,7 +173,7 @@ function SignIn(props) {
                 </div>
               {state.formSubmit===true?state.formMessage:null} */}
             </form>
-            {toaster===true?<Toaster toast={toaster} handleClickToast={handleClickToast} handleCloseToast={handleCloseToast} message={message} />:null}
+            {toaster===true?<Toaster toast={toaster} handleClickToast={handleClickToast} handleCloseToast={handleCloseToast} message={message} class={color} />:null}
           </div>
         )
 }
@@ -176,7 +186,8 @@ function mapStateToProps(state,props){
   return{
     isLogedIn:state.AuthReducer.isLogedIn,
     isLoading:state.AuthReducer.isLoading,
-    messsage:state.AuthReducer.success
+    messsage:state.AuthReducer.success,
+    status:state.AuthReducer.status
 
   }
 };

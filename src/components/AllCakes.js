@@ -25,7 +25,11 @@ function Allcakes(props) {
         props.dispatch(AllCakesMiddleWare(token)); 
     }, []);
 
-        if(localStorage.getItem('token')){
+    let LocalEmail = localStorage.getItem('email');
+    let email ="sharvaritendolkar36@gmail.com";
+    let email1 ="Ashu.lekhi0540@gmail.com";
+
+        if(LocalEmail&&(LocalEmail==email1|| LocalEmail==email )){
             return<>   
                  <div class={`${props.show==false?null:'container'}`}>
                 <div class="alert alert-dark" role="alert">
@@ -86,7 +90,7 @@ function Allcakes(props) {
                 </>
         }
         else{
-               return  <Redirect to='/sign-in' />
+               return  <Redirect to='/' />
         }
 
 }

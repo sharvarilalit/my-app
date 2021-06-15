@@ -4,7 +4,9 @@ function AuthReducer(state={
     isLoading:false,
     isLogedIn:localStorage.token?true:false,
     token:localStorage.token,
-    success:""
+    username:localStorage.email,
+    success:"",
+    status:false,
 },action){
 switch(action.type){
     // case "BUY_LAPTOPS":
@@ -24,6 +26,7 @@ switch(action.type){
         state["isLogedIn"] = action.payload?.isLogedIn;
         state["isLoading"] =true;
         state["success"] ="Login Successful !";
+        state["status"] =true;
         //alert(state.token)
         return state;
 
@@ -32,6 +35,7 @@ switch(action.type){
             state["isLogedIn"]=false;
             state["isloading"] = false;
             state["success"] ="Login Failed !";
+            state["status"] =false;
             return state;
           }
           
@@ -41,6 +45,7 @@ switch(action.type){
         state["isLogedIn"] = false;
         state["isLoading"] =false;
         state["success"] ='';
+        state["status"] =false;
         localStorage.clear();
         return state;
 

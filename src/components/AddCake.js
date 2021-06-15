@@ -39,6 +39,7 @@ import Toaster from './toaster';
         const dispatch = useDispatch();
         const status = useSelector(state => state.AdminReducer.status);
         const response = useSelector(state => state.AdminReducer.message);
+        const [color, setColor] = React.useState('');
 
    
 
@@ -61,8 +62,6 @@ import Toaster from './toaster';
      const  handleInputSubmit=(e)=>{
       e.preventDefault();
        if(state.formValid){
-         alert(1)
-       }
         dispatch({
           type:'ADD_CAKE',
           payload:{
@@ -70,6 +69,7 @@ import Toaster from './toaster';
             token:localStorage.token
           }
         })
+       }
           console.log(state)
          
       }
@@ -77,13 +77,15 @@ import Toaster from './toaster';
       React.useEffect(()=>{
         if(response!=''){
           if(status===true ){
+            setColor("success")
             setTimeout(function(){ 
               window.location.reload();
           }, 1000);
              props.close();
           }
           setToasteropen(true);
-          setMessage(response)
+          setMessage(response);
+          setColor("warning")
 
         }
       },[status,response])
@@ -304,13 +306,13 @@ import Toaster from './toaster';
                {createUI()}     
               </div>
             
-              {state.formValid?<button className="button" disabled={!state.formValid}> Login </button>:
-                  <button className="Disabled" disabled={!state.formValid}> Login </button>
+              {state.formValid?<button className="button" disabled={!state.formValid}> Save </button>:
+                  <button className="Disabled" disabled={!state.formValid}> Save </button>
               }
             </form>
 
           </div>
-          {toaster===true?<Toaster toast={toaster} handleClickToast={handleClickToast} handleCloseToast={handleCloseToast} message={message} />:null}
+          {toaster===true?<Toaster toast={toaster} handleClickToast={handleClickToast} handleCloseToast={handleCloseToast} message={message} class={color}/>:null}
           </>
          
         )

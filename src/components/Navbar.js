@@ -17,6 +17,9 @@ const Navbar=(props)=>{
   //const[searchInput, setSearchInput]=React.useState("kuch bhi")
   let [button, setButton] =React.useState(false);
   let searchInput ="";
+  let LocalEmail = localStorage.getItem('email');
+  let email ="sharvaritendolkar36@gmail.com";
+  let email1 ="Ashu.lekhi0540@gmail.com";
 
 
   const search=(e)=>{
@@ -74,6 +77,7 @@ const Navbar=(props)=>{
     setButton(!button)
     props.click();
   }
+
   //console.log('props in this',props.ordercount)
     return(
         <>
@@ -108,7 +112,7 @@ const Navbar=(props)=>{
               <ShopIcon  onClick={goToOrders} style={{color:'#fff',cursor:'pointer'}}/>
             </Badge>}&nbsp;&nbsp;
 
-            {props.isLogedIn&& <PersonIcon  onClick={goToAdmin} style={{color:'#fff',cursor:'pointer'}}/>
+            {LocalEmail&&(LocalEmail==email1|| LocalEmail==email)&& <PersonIcon  onClick={goToAdmin} style={{color:'#fff',cursor:'pointer'}}/>
             }
           </div>
         </div>
