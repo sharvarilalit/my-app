@@ -21,7 +21,7 @@ render() {
         fullWidth={true}
         maxWidth={"md"}
       >
-        <DialogTitle> <h2>Add cake</h2></DialogTitle>
+        <DialogTitle> <h2 style={{fontWeight:'bold'}}>Add cake</h2></DialogTitle>
         <DialogContent>
             <AddCake close={this.props.handleClose}/>
         </DialogContent>

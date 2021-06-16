@@ -82,7 +82,7 @@ import { CartListMiddleware } from '../reduxstore/middlewares'
          };
 
     let{image,name ,description,ratings, type, ingredients, flavour,price, weight} =   cakedata;
-    //console.log("cakedata",cakedata);
+    // console.log("props in this",props);
     return (
     
         //     <p>Using useParams:{cakeid}</p>
