@@ -7,10 +7,30 @@ import Empty from '../images/emty.png'
 import Loader from "react-loader-spinner";
 import { AllCakesMiddleWare } from '../reduxstore/middlewares'
 import Modal from './Modal';
+import ReactPaginate from "react-paginate";
+import "../css/pagination.css";
 
 
 function Allcakes(props) {
     const [open, setOpen] = React.useState(false);
+    const [offset, setOffset] = useState(0);
+    const [perPage] = useState(8);
+    const [pageCount, setPageCount] = useState(0);
+    const  [slice, setSlice] = useState([]);
+
+    const handlePageClick = (e) => {
+        // alert(e.selected)
+         const selectedPage = e.selected;
+         setOffset(selectedPage);
+       };
+
+    React.useEffect(() => {
+        if( props.cakes.length<8){
+          setSlice(props.cakes);
+          return;
+        }
+      setSlice(props.cakes.slice(offset*perPage, perPage*(offset+1)));
+    },[offset, props.cakes]);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -55,7 +75,7 @@ function Allcakes(props) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {props.cakes.map((x)=>{ return <tr>
+                                {slice.map((x)=>{ return <tr>
                                         <td>
                                             <div class="product-item">
                                                 <a class="product-thumb" href={'/cake/'+x.cakeid}><img src={x.image} alt="Product" style={{width:'100px'}} /></a>
@@ -83,6 +103,24 @@ function Allcakes(props) {
                 :<center><img src={Empty} style={{width:'500px'}} />
                 <p>No cake :(</p>
                 </center>}
+
+                {props.cakes&&props.cakes.length>perPage?
+                    <div class="col" style={{display:'block',width:"100%"}}>
+                        <ReactPaginate
+                        previousLabel={"prev"}
+                        nextLabel={"next"}
+                        breakLabel={"..."}
+                        breakClassName={"break-me"}
+                        pageCount={ Math.ceil(props.cakes.length/perPage)}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"}
+                    />
+                    </div>
+                :null}
                 </div>}
                 {/* end of row */}
                 <Modal  open={open} handleClose={handleClose} />

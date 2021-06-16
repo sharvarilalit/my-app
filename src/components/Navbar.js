@@ -12,6 +12,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { CartListMiddleware , OrderMiddleware} from '../reduxstore/middlewares';
 import PersonIcon from '@material-ui/icons/Person';
+import "../css/search.css";
 
 const Navbar=(props)=>{
   //const[searchInput, setSearchInput]=React.useState("kuch bhi")
@@ -99,9 +100,12 @@ const Navbar=(props)=>{
               {/* <button onClick={handleClick}>{props.button&&props.button==true?"Logout":"Login"}</button> */}
             </ul>
             <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={changeOn} />
+              {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={changeOn} /> */}
               {/* <button className="btn btn-outline-success" type="submit" onClick={(e)=>alert("hii")}>Search</button> */}
-              <button type="button" class="btn btn-warning" type="submit" onClick={search}>Search</button>
+              {/* <button type="button" class="btn btn-warning" type="submit" onClick={search}>Search</button> */}
+            
+              <div class="orm-control me-2 search">  <input type="text" class="form-control" placeholder="Search" onChange={changeOn} /> <button class="btn" onClick={search}><i class="fa fa-search"></i></button> </div>
+            
             </form>
             &nbsp;
             {props.isLogedIn&&<Badge badgeContent={props.count.length==0?0:props.count.length} color="secondary">

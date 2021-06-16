@@ -1,0 +1,34 @@
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    width:100% !important;
+}
+
+.search input {
+    height: 40px;
+    border: 1px solid #6c757d
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 1px solid #6c757d
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    font-size: 20px;
+    color:#fff
+}
+
+.search button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 40px;
+    width: 45px;
+    background: #6c757d;
+    padding:10px;
+    border:none;
+}
